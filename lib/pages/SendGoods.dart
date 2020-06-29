@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
-import 'package:zbbscodeapp/pages/tool.dart';
+import 'common/tool.dart';
 
 void main() => runApp(SendGoods());
 

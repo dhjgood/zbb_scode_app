@@ -10,12 +10,10 @@ class Displace extends StatefulWidget {
   }
 }
 
-
 class _DisplaceState extends State<Displace> {
-
   String titleName = "置换";
   String resName = "列表~";
-  String getmode = "请选择扫码方式";
+  int getmode = 1;
 
   @override
   void initState() {
@@ -34,16 +32,16 @@ class _DisplaceState extends State<Displace> {
         children: <Widget>[
           ListTile(
               title: Text(
-                this.titleName + this.resName,
-                style: TextStyle(fontSize: 20),
-              )),
+            this.titleName + this.resName,
+            style: TextStyle(fontSize: 20),
+          )),
           Container(
 //            decoration: BoxDecoration(
 //                border: Border(
 //                  bottom: BorderSide(color: Colors.black12, width: 0.5),
 //                  top: BorderSide(color: Colors.black12, width: 0.5),
 //                )),
-          color: Colors.white,
+            color: Colors.white,
             width: double.infinity,
             height: 305,
             child: Flex(
@@ -55,35 +53,36 @@ class _DisplaceState extends State<Displace> {
                     padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                     decoration: BoxDecoration(
                         border: Border(
-                          bottom: BorderSide(color: Color.fromRGBO(235, 237, 240, 1), width: 1),
-                        )),
+                      bottom: BorderSide(
+                          color: Color.fromRGBO(235, 237, 240, 1), width: 1),
+                    )),
 //                    color: Colors.red,
                     child: Column(
                       children: <Widget>[
                         ListTile(
                             title: Text(
-                              "坏码：0",
-                              style: TextStyle(fontSize: 20),
+                          "坏码：0",
+                          style: TextStyle(fontSize: 20),
                         )),
-                       Container(
-                         height: 90,
-                         child: ListView.builder(
-                           itemCount: 10,
-                           itemBuilder: (BuildContext context, int i) {
-                            return Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Padding(
-                                  padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                                  child: Text("",style: TextStyle(
-                                    fontSize: 18
-                                  ),),
-                                )
-                              ],
-                            );
-                           }
-                         ),
-                       )
+                        Container(
+                          height: 90,
+                          child: ListView.builder(
+                              itemCount: 10,
+                              itemBuilder: (BuildContext context, int i) {
+                                return Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                                      child: Text(
+                                        "",
+                                        style: TextStyle(fontSize: 18),
+                                      ),
+                                    )
+                                  ],
+                                );
+                              }),
+                        )
                       ],
                     ),
                   ),
@@ -94,35 +93,35 @@ class _DisplaceState extends State<Displace> {
                     padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                     decoration: BoxDecoration(
                         border: Border(
-                          bottom: BorderSide(color: Color.fromRGBO(235, 237, 240, 1), width: 1),
-                        )),
+                      bottom: BorderSide(
+                          color: Color.fromRGBO(235, 237, 240, 1), width: 1),
+                    )),
 //                    color: Colors.red,
                     child: Column(
                       children: <Widget>[
                         ListTile(
                             title: Text(
-                              "新码：0",
-                              style: TextStyle(fontSize: 20),
-                            )),
+                          "新码：0",
+                          style: TextStyle(fontSize: 20),
+                        )),
                         Container(
                           height: 90,
                           child: ListView.builder(
                               itemCount: 0,
                               itemBuilder: (BuildContext context, int i) {
                                 return Column(
-
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
                                     Padding(
                                       padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                                      child: Text("",style: TextStyle(
-                                          fontSize: 18
-                                      ),),
+                                      child: Text(
+                                        "",
+                                        style: TextStyle(fontSize: 18),
+                                      ),
                                     )
                                   ],
                                 );
-                              }
-                          ),
+                              }),
                         )
                       ],
                     ),
@@ -287,7 +286,7 @@ class _DisplaceState extends State<Displace> {
         child: Column(
           children: <Widget>[
             GestureDetector(
-                child: Container(
+              child: Container(
 //                          decoration: BoxDecoration(
 //                            border: Border(
 //                              right: BorderSide(
@@ -296,62 +295,50 @@ class _DisplaceState extends State<Displace> {
 //                              )
 //                            )
 //                          ),
+                height: 70,
+                color: Colors.white,
+                child: Container(
+                  padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                  alignment: Alignment(-1, 0),
                   height: 70,
                   color: Colors.white,
-                  child: Container(
-                    padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                    alignment: Alignment(-1, 0),
-                    height: 70,
-                    color: Colors.white,
-                    child: Text(
-                      "扫码方式：" + this.getmode,
-                      style: TextStyle(fontSize: 20),
-                    ),
+                  child: Row(
+                    children: <Widget>[
+                      Text(
+                        "坏码",
+                        style: TextStyle(fontSize: 18),
+                      ),
+                      Radio(
+                        value: 1,
+                        onChanged: (v) {
+                          setState(() {
+                            this.getmode = v;
+                          });
+                        },
+                        groupValue: this.getmode,
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text("新码", style: TextStyle(fontSize: 18)),
+                      Radio(
+                        value: 2,
+                        onChanged: (v) {
+                          setState(() {
+                            this.getmode = v;
+                          });
+                        },
+                        groupValue: this.getmode,
+                      )
+                    ],
                   ),
                 ),
-                onTap: () {
-                  print("2112");
-                  showDialog<Widget>(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return SimpleDialog(
-//                                  title:  Text('选择扫码方式',style:  TextStyle(fontSize: 20),),
-                        children: <Widget>[
-                          SimpleDialogOption(
-                            child: Text(
-                              '坏码',
-                              style: TextStyle(fontSize: 18),
-                              textAlign: TextAlign.center,
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                this.getmode = "坏码";
-                              });
-                              Navigator.of(context).pop();
-                            },
-                          ),
-                          Divider(),
-                          SimpleDialogOption(
-                            child: Text(
-                              '新码',
-                              style: TextStyle(fontSize: 18),
-                              textAlign: TextAlign.center,
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                this.getmode = "新码";
-                              });
-                              Navigator.of(context).pop();
-                            },
-                          ),
-                        ],
-                      );
-                    },
-                  );
-                })
+              ),
+            )
           ],
         ));
   }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

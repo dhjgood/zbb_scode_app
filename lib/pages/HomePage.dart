@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:zbbscodeapp/pages/tool.dart';
+import 'common/tool.dart';
 import '../routers.dart';
 
 class HomePage extends StatelessWidget {
